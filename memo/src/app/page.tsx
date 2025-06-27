@@ -1,5 +1,6 @@
 "use client";
 
+import { MemoList } from "@/components/MemoList";
 import { ChangeEvent, useState, FC } from "react";
 
 const Home: FC = () => {
@@ -28,19 +29,7 @@ const Home: FC = () => {
 
       <button className="bg-green-100 border-solid border-1 border-black-300 ml-8 text-black-500 rounded-sm" onClick={onClickAdd}>追加</button>
 
-      <div className="border-solid border-1 border-gray-300 p-16 m-8">
-        <p className="text-left mb-4 text-lg text-black-500">メモ一覧</p>
-        <ul className="list-disc">
-          {memos.map((memo, index) => (
-            <li key={memo}>
-              <div className="flex items-center">
-                <p className="text-lg text-red-500">{memo}</p>
-                <button className="bg-pink-100 border-solid border-1 border-black-300 ml-8 text-black-500 rounded-sm" onClick={() => onClickDelete(index)}>削除</button>
-              </div>
-            </li>
-          ))}
-        </ul>
-      </div>
+      <MemoList memos={memos} onClickDelete={onClickDelete} />
     </>
   );
 };
