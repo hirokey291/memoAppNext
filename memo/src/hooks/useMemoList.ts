@@ -17,10 +17,12 @@ export const useMemoList = () => {
   const deleteMemo = useCallback(
     (index: number) => {
       const newMemos = [...memos];
-      newMemos.splice(index, 1);
-      setMemos(newMemos);
-    },
-    [memos],
+      const result = confirm("本当に削除しますか？");
+      if (result) {
+        newMemos.splice(index, 1);
+        setMemos(newMemos);
+      }
+    },[memos],
   );
 
   return { memos, addMemo, deleteMemo };
